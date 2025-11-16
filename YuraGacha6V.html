@@ -1,530 +1,406 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>YuraGacha</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>
-    :root {
-      color-scheme: dark;
-    }
-    * {
-      box-sizing: border-box;
-    }
-    body {
-      margin: 0;
-      min-height: 100vh;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", sans-serif;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 16px;
-      background:
-        radial-gradient(circle at 0% 0%, #22c55e15, transparent 55%),
-        radial-gradient(circle at 100% 100%, #3b82f615, transparent 55%),
-        #020617;
-      color: #e5e7eb;
-    }
-    .shell {
-      width: 100%;
-      max-width: 480px;
-    }
-    .title-row {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 10px;
-      padding: 0 2px;
-    }
-    .app-name {
-      font-size: 20px;
-      font-weight: 650;
-      letter-spacing: 0.02em;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-    .app-pill {
-      padding: 3px 9px;
-      border-radius: 999px;
-      font-size: 11px;
-      border: 1px solid #22c55e40;
-      color: #bbf7d0;
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-      background: linear-gradient(135deg, #22c55e25, #16a34a15);
-    }
-    .dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 999px;
-      background: #22c55e;
-      box-shadow: 0 0 8px #22c55e;
-    }
-    .creator {
-      margin-top: 3px;
-      font-size: 11px;
-      opacity: 0.7;
-      text-align: left;
-      padding-left: 2px;
-    }
-    .card {
-      position: relative;
-      border-radius: 22px;
-      padding: 18px 16px 18px;
-      background: radial-gradient(circle at top left, #020617dd 0, #020617f2 35%, #020617f2 100%);
-      border: 1px solid rgba(148,163,184,0.28);
-      box-shadow:
-        0 22px 55px rgba(15,23,42,0.85),
-        0 0 0 1px rgba(15,23,42,0.8);
-      overflow: hidden;
-    }
-    .card::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(circle at top right, rgba(59,130,246,0.16), transparent 55%),
-        radial-gradient(circle at bottom left, rgba(34,197,94,0.18), transparent 55%);
-      opacity: 0.7;
-      pointer-events: none;
-    }
-    .card-inner {
-      position: relative;
-      z-index: 1;
-    }
-    .subtitle {
-      font-size: 12px;
-      color: #9ca3af;
-      margin: 2px 0 14px;
-    }
-    .file-zone {
-      border-radius: 16px;
-      border: 1px dashed rgba(148,163,184,0.55);
-      padding: 10px 11px 11px;
-      background: linear-gradient(145deg, rgba(15,23,42,0.85), rgba(15,23,42,0.4));
-      display: flex;
-      flex-direction: column;
-      gap: 7px;
-    }
-    .file-label {
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 0.09em;
-      color: #6b7280;
-    }
-    .file-row {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 13px;
-    }
-    .file-row input[type="file"] {
-      flex: 1;
-      font-size: 12px;
-      color: #e5e7eb;
-    }
-    .chip {
-      font-size: 11px;
-      padding: 3px 8px;
-      border-radius: 999px;
-      border: 1px solid rgba(148,163,184,0.55);
-      color: #cbd5f5;
-      background: rgba(15,23,42,0.9);
-      white-space: nowrap;
-    }
-    .status {
-      font-size: 11px;
-      color: #9ca3af;
-      min-height: 14px;
-      margin-top: 4px;
-    }
-    .number-box {
-      margin-top: 16px;
-      padding: 14px 12px 12px;
-      border-radius: 16px;
-      background: radial-gradient(circle at top, #111827, #020617 60%);
-      border: 1px solid rgba(55,65,81,0.9);
-      box-shadow: inset 0 0 0 1px rgba(15,23,42,0.8);
-      transition: box-shadow 0.2s ease;
-    }
-    .number-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 6px;
-      margin-bottom: 6px;
-    }
-    .label {
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 0.11em;
-      color: #6b7280;
-    }
-    .badge-live {
-      border-radius: 999px;
-      font-size: 11px;
-      padding: 2px 8px 3px;
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-      background: rgba(22,163,74,0.16);
-      color: #bbf7d0;
-    }
-    .badge-live span {
-      width: 6px;
-      height: 6px;
-      border-radius: 999px;
-      background: #22c55e;
-      box-shadow: 0 0 8px #22c55e;
-    }
-    .number {
-      font-size: 24px;
-      font-weight: 650;
-      color: #22c55e;
-      word-break: break-all;
-      text-align: center;
-      min-height: 28px;
-      letter-spacing: 0.03em;
-    }
+<meta charset="UTF-8">
+<title>YuraGacha</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+  :root { color-scheme: dark; }
+  * { box-sizing: border-box; }
 
-    /* Gacha animation: pop & glow */
-    @keyframes resultPop {
-      0%   { transform: scale(0.8); opacity: 0; }
-      60%  { transform: scale(1.08); opacity: 1; }
-      100% { transform: scale(1); }
-    }
-    @keyframes boxGlow {
-      0%   { box-shadow: 0 0 0 0 rgba(34,197,94,0.7), inset 0 0 0 1px rgba(15,23,42,0.8); }
-      100% { box-shadow: 0 0 0 28px rgba(34,197,94,0), inset 0 0 0 1px rgba(15,23,42,0.8); }
-    }
-    .number.anim-pop {
-      animation: resultPop 0.35s ease-out;
-    }
-    .number-box.anim-glow {
-      animation: boxGlow 0.45s ease-out;
-    }
+  body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    background: #020617;
+    color: #e5e7eb;
+    font-family: system-ui, sans-serif;
+  }
 
-    /* Copy button */
-    .number-actions {
-      margin-top: 8px;
-      display: flex;
-      justify-content: center;
-      gap: 8px;
-    }
-    .btn-mini {
-      border-radius: 999px;
-      border: 1px solid rgba(75,85,99,0.95);
-      background: rgba(15,23,42,0.95);
-      font-size: 11px;
-      padding: 4px 10px;
-      color: #e5e7eb;
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-      cursor: pointer;
-      transition: transform 0.08s ease, opacity 0.12s ease;
-    }
-    .btn-mini:active {
-      transform: scale(0.96);
-    }
-    .btn-mini:disabled {
-      opacity: 0.35;
-      cursor: not-allowed;
-    }
+  .shell { width:100%; max-width:480px; }
 
-    /* Copy animation */
-    @keyframes copyBounce {
-      0%   { transform: scale(1); }
-      40%  { transform: scale(0.9); }
-      100% { transform: scale(1); }
-    }
-    .btn-mini.copied {
-      animation: copyBounce 0.2s ease-out;
-    }
+  .card {
+    padding: 18px;
+    border-radius: 20px;
+    background: rgba(15,23,42,0.85);
+    border: 1px solid rgba(148,163,184,0.28);
+    margin-top: 20px;
+  }
 
-    .empty {
-      font-size: 13px;
-      color: #9ca3af;
-      text-align: center;
-      margin-top: 6px;
-    }
-    .btn-row {
-      display: flex;
-      gap: 10px;
-      margin-top: 18px;
-    }
-    button {
-      flex: 1;
-      border: none;
-      border-radius: 999px;
-      padding: 11px 12px;
-      font-size: 14px;
-      font-weight: 600;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 7px;
-      transition: transform 0.08s ease, opacity 0.12s ease;
-    }
-    button:active {
-      transform: scale(0.97);
-    }
-    .btn-gacha {
-      background: radial-gradient(circle at top left, #4ade80, #22c55e);
-      color: #022c22;
-      box-shadow: 0 12px 26px rgba(34,197,94,0.45);
-    }
-    .btn-gacha:disabled {
-      opacity: 0.28;
-      cursor: not-allowed;
-      box-shadow: none;
-    }
-    .btn-reset {
-      max-width: 120px;
-      background: rgba(15,23,42,0.95);
-      color: #e5e7eb;
-      border: 1px solid rgba(75,85,99,0.9);
-      box-shadow: 0 8px 16px rgba(15,23,42,0.85);
-      flex: 0.9;
-      font-weight: 500;
-    }
-    .counter {
-      margin-top: 8px;
-      font-size: 11px;
-      color: #9ca3af;
-      text-align: right;
-    }
-    @media (max-width: 480px) {
-      .card {
-        padding: 16px 13px 16px;
-      }
-      .btn-row {
-        gap: 8px;
-      }
-      .btn-reset {
-        max-width: 105px;
-      }
-    }
-  </style>
+  input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    border: none;
+    margin-top: 8px;
+    background: rgba(30,41,59,0.8);
+    color: #e5e7eb;
+  }
+
+  .btn {
+    width: 100%;
+    padding: 12px;
+    border-radius: 999px;
+    border: none;
+    margin-top: 12px;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 600;
+  }
+
+  .btn-success { background: #22c55e; color: #022c22; }
+  .btn-dark { background: #111827; color:#e5e7eb; border:1px solid #374151; }
+  .btn-red { background:#dc2626; color:white; }
+
+  .link {
+    color:#38bdf8;
+    margin-top:8px;
+    text-align:center;
+    font-size:13px;
+    cursor:pointer;
+  }
+
+  .file-zone { border:1px dashed #334155; padding:10px; border-radius:12px; }
+  .number-box { margin-top:12px; padding:14px; background:#111827; border:1px solid #374151; border-radius:12px; }
+  .number { font-size:24px; text-align:center; color:#22c55e; }
+
+  #savedList span {
+    background:#0f172a; border:1px solid #4b5563;
+    padding:4px 8px; margin:2px; border-radius:6px; display:inline-block;
+  }
+
+  .admin-item {
+    padding:10px;
+    border-radius:10px;
+    background:#0f172a;
+    margin-top:8px;
+    border:1px solid #334155;
+  }
+</style>
 </head>
 <body>
-  <div class="shell">
-    <div class="title-row">
-      <div>
-        <div class="app-name">YuraGacha</div>
-        <div class="creator">Creator: <b>Muon No Yura</b></div>
-      </div>
-      <div class="app-pill">
-        <span class="dot"></span>
-        <span>Local Panel</span>
-      </div>
-    </div>
+<div class="shell">
 
-    <div class="card">
-      <div class="card-inner">
-        <p class="subtitle">
-          Import a TXT file with one number per line, then press <b>GACHA</b> to pick a random number.
-          Drawn numbers are removed from this session.
-        </p>
+<!-- ================= LOG IN ================= -->
+<div id="loginPage">
+  <div class="card">
+    <h2>Login</h2>
 
-        <div class="file-zone">
-          <div class="file-label">Source File</div>
-          <div class="file-row">
-            <input type="file" id="fileInput" accept=".txt">
-            <div class="chip">.txt only</div>
-          </div>
-          <div class="status" id="statusText">No file yet. Choose a TXT file with numbers.</div>
-        </div>
+    <input id="loginUser" placeholder="Username">
+    <input id="loginPass" type="password" placeholder="Password">
 
-        <div class="number-box" id="numberBox">
-          <div class="number-header">
-            <div class="label">Last Result</div>
-            <div class="badge-live"><span></span> live session</div>
-          </div>
+    <button class="btn btn-success" id="loginBtn">Login</button>
 
-          <div class="number" id="numberDisplay">—</div>
+    <div class="link" onclick="showRegister()">Create account</div>
 
-          <div class="number-actions">
-            <button class="btn-mini" id="copyBtn" disabled>
-              📋 Copy
-            </button>
-          </div>
+    <div id="loginMsg" style="margin-top:8px; color:#f87171;"></div>
+  </div>
+</div>
 
-          <div class="empty" id="emptyText" style="display:none;">
-            All numbers have been used. Import a new file to start again.
-          </div>
-        </div>
+<!-- ================= REGISTER ================= -->
+<div id="registerPage" style="display:none;">
+  <div class="card">
+    <h2>Register</h2>
 
-        <div class="btn-row">
-          <button class="btn-gacha" id="gachaBtn" disabled>
-            🎲 GACHA
-          </button>
-          <button class="btn-reset" id="resetBtn">
-            ⟳ Clear
-          </button>
-        </div>
+    <input id="regUser" placeholder="Choose Username">
+    <input id="regPass" type="password" placeholder="Choose Password">
 
-        <div class="counter" id="counterText"></div>
-      </div>
-    </div>
+    <button class="btn btn-success" id="regBtn">Register</button>
+
+    <div class="link" onclick="showLogin()">Back to Login</div>
+    <div id="regMsg" style="margin-top:8px; color:#f87171;"></div>
+  </div>
+</div>
+
+<!-- ================= MAIN USER PAGE ================= -->
+<div id="mainPage" style="display:none;">
+  <div style="display:flex; justify-content:space-between; align-items:center;">
+    <h2>YuraGacha</h2>
+    <button class="btn-dark" onclick="logout()" style="padding:6px 12px;">Logout</button>
   </div>
 
-  <script>
-    let numbers = [];
-    let usedCount = 0;
+  <!-- Upload -->
+  <div class="card">
+    <div class="file-zone">
+      <input type="file" id="fileInput" accept=".txt">
+    </div>
+    <div id="statusText" style="margin-top:10px;">No file yet.</div>
 
-    const fileInput     = document.getElementById('fileInput');
-    const statusText    = document.getElementById('statusText');
-    const numberDisplay = document.getElementById('numberDisplay');
-    const numberBox     = document.getElementById('numberBox');
-    const emptyText     = document.getElementById('emptyText');
-    const gachaBtn      = document.getElementById('gachaBtn');
-    const resetBtn      = document.getElementById('resetBtn');
-    const counterText   = document.getElementById('counterText');
-    const copyBtn       = document.getElementById('copyBtn');
+    <div class="number-box">
+      <div class="number" id="numberDisplay">—</div>
 
-    // Always ensure '+' in front of the number
-    function formatPlus(n) {
-      if (!n) return n;
-      n = n.trim();
-      if (!n) return n;
-      return n.startsWith('+') ? n : '+' + n;
-    }
+      <div style="display:flex; gap:10px; margin-top:12px;">
+        <button class="btn-dark" id="copyBtn" disabled>Copy</button>
+        <button class="btn-dark" id="saveBtn" disabled>Save</button>
+      </div>
 
-    function updateCounter() {
-      if (numbers.length === 0 && usedCount === 0) {
-        counterText.textContent = '';
-        return;
-      }
-      counterText.textContent = `Remaining: ${numbers.length} • Used: ${usedCount}`;
-    }
+      <div id="emptyText" style="display:none; margin-top:6px; color:#94a3b8;">
+        All numbers used.
+      </div>
+    </div>
 
-    function updateButtons() {
-      const val = numberDisplay.textContent.trim();
-      copyBtn.disabled = (val === '—');
-    }
+    <div style="display:flex; gap:10px; margin-top:15px;">
+      <button class="btn-success" id="gachaBtn" disabled>GACHA</button>
+      <button class="btn-dark" id="resetBtn">Clear</button>
+    </div>
 
-    function playGachaAnimation() {
-      // remove first to restart animation
-      numberDisplay.classList.remove('anim-pop');
-      numberBox.classList.remove('anim-glow');
+    <div id="counterText" style="margin-top:10px;"></div>
+  </div>
 
-      void numberDisplay.offsetWidth; // force reflow
-      numberDisplay.classList.add('anim-pop');
-      numberBox.classList.add('anim-glow');
+  <!-- Saved -->
+  <div class="card">
+    <h3>Saved Numbers</h3>
+    <div id="savedList">(empty)</div>
+    <button class="btn-dark" id="clearSaved" style="margin-top:10px;width:100%;">Clear Saved</button>
+  </div>
+</div>
 
-      setTimeout(() => {
-        numberDisplay.classList.remove('anim-pop');
-        numberBox.classList.remove('anim-glow');
-      }, 500);
-    }
+<!-- ================= ADMIN PANEL ================= -->
+<div id="adminPage" style="display:none;">
+  <h2>Admin Panel</h2>
+  <button class="btn-dark" onclick="logout()" style="padding:6px 12px;">Logout</button>
 
-    fileInput.addEventListener('change', () => {
-      const file = fileInput.files[0];
-      if (!file) return;
+  <div class="card">
+    <h3>All Users</h3>
+    <div id="adminUserList"></div>
+  </div>
+</div>
 
-      const reader = new FileReader();
-      reader.onload = (e) => {
-        numbers = e.target.result
-          .split(/\r?\n/)
-          .map(l => l.trim())
-          .filter(l => l.length > 0)
-          .map(formatPlus);
+</div>
 
-        usedCount = 0;
-        numberDisplay.textContent = '—';
-        emptyText.style.display = 'none';
-        gachaBtn.disabled = numbers.length === 0;
+<script>
+/* ======================= DATABASE ======================= */
+function loadUsers(){ return JSON.parse(localStorage.getItem("yg_users") || "{}"); }
+function saveUsers(o){ localStorage.setItem("yg_users", JSON.stringify(o)); }
 
-        if (numbers.length === 0) {
-          statusText.textContent = 'File is empty or has no valid numbers.';
-        } else {
-          statusText.textContent = `Loaded: ${file.name} • ${numbers.length} numbers ready.`;
-        }
+function loadUserDB(){ return JSON.parse(localStorage.getItem("yg_userData") || "{}"); }
+function saveUserDB(o){ localStorage.setItem("yg_userData", JSON.stringify(o)); }
 
-        updateCounter();
-        updateButtons();
-      };
-      reader.readAsText(file);
-    });
+/* ======================= PAGE SWITCH ======================= */
+function showLogin(){ loginPage.style.display="block"; registerPage.style.display="none"; mainPage.style.display="none"; adminPage.style.display="none";}
+function showRegister(){ loginPage.style.display="none"; registerPage.style.display="block"; mainPage.style.display="none"; adminPage.style.display="none";}
+function showMain(){ loginPage.style.display="none"; registerPage.style.display="none"; mainPage.style.display="block"; adminPage.style.display="none";}
+function showAdmin(){ loginPage.style.display="none"; registerPage.style.display="none"; mainPage.style.display="none"; adminPage.style.display="block"; }
 
-    gachaBtn.addEventListener('click', () => {
-      if (numbers.length === 0) {
-        gachaBtn.disabled = true;
-        emptyText.style.display = 'block';
-        numberDisplay.textContent = '—';
-        statusText.textContent = 'All numbers have been used. Import a new file to start again.';
-        updateCounter();
-        updateButtons();
-        return;
-      }
+/* ======================= AUTO LOGIN ======================= */
+let active = localStorage.getItem("activeUser");
+if(active){
+  if(active === "admin") showAdmin();
+  else showMain();
+}
 
-      const idx = Math.floor(Math.random() * numbers.length);
-      const picked = formatPlus(numbers.splice(idx, 1)[0]);
+/* ======================= REGISTER ======================= */
+regBtn.onclick = ()=>{
+  let u = regUser.value.trim();
+  let p = regPass.value.trim();
+  let users = loadUsers();
+  let db = loadUserDB();
 
-      usedCount++;
-      numberDisplay.textContent = picked || '—';
-      emptyText.style.display = numbers.length === 0 ? 'block' : 'none';
+  if(!u || !p){ regMsg.textContent="Both fields required."; return; }
+  if(users[u]){ regMsg.textContent="Username exists."; return; }
 
-      if (numbers.length === 0) {
-        gachaBtn.disabled = true;
-        statusText.textContent = 'All numbers have been used. Import a new file to start again.';
-      } else {
-        statusText.textContent = 'Number drawn. Press GACHA again for the next one.';
-      }
+  users[u] = p;
+  db[u] = { saved: [] };
 
-      updateCounter();
-      updateButtons();
-      playGachaAnimation();
-    });
+  saveUsers(users);
+  saveUserDB(db);
 
-    resetBtn.addEventListener('click', () => {
-      numbers = [];
-      usedCount = 0;
-      fileInput.value = '';
-      numberDisplay.textContent = '—';
-      emptyText.style.display = 'none';
-      gachaBtn.disabled = true;
-      statusText.textContent = 'Session cleared. Choose a TXT file again.';
-      updateCounter();
-      updateButtons();
-    });
+  localStorage.setItem("activeUser", u);
+  showMain();
+};
 
-    copyBtn.addEventListener('click', () => {
-      const val = numberDisplay.textContent.trim();
-      if (!val || val === '—') return;
+/* ======================= LOGIN ======================= */
+loginBtn.onclick = ()=>{
+  let u = loginUser.value.trim();
+  let p = loginPass.value.trim();
+  let users = loadUsers();
 
-      const temp = document.createElement('textarea');
-      temp.value = val;
-      temp.setAttribute('readonly', '');
-      temp.style.position = 'fixed';
-      temp.style.left = '-9999px';
-      document.body.appendChild(temp);
-      temp.select();
-      temp.setSelectionRange(0, temp.value.length);
+  if(u==="admin" && p==="admin"){
+    localStorage.setItem("activeUser","admin");
+    refreshAdmin();
+    showAdmin();
+    return;
+  }
 
-      let success = false;
-      try {
-        success = document.execCommand('copy');
-      } catch (e) {
-        success = false;
-      }
-      document.body.removeChild(temp);
+  if(users[u] && users[u] === p){
+    localStorage.setItem("activeUser", u);
+    showMain();
+  } else {
+    loginMsg.textContent="Wrong username/password.";
+  }
+};
 
-      if (success) {
-        statusText.textContent = 'Result copied to clipboard.';
-        copyBtn.classList.add('copied');
-        setTimeout(() => copyBtn.classList.remove('copied'), 220);
-      } else {
-        statusText.textContent = 'Failed to copy. Long-press the number to copy manually.';
-      }
-    });
+/* ======================= LOGOUT ======================= */
+function logout(){
+  localStorage.removeItem("activeUser");
+  showLogin();
+}
 
-    updateCounter();
-    updateButtons();
-  </script>
+/* ======================= ADMIN PANEL ======================= */
+function refreshAdmin(){
+  let users = loadUsers();
+  let db = loadUserDB();
+  let box = document.getElementById("adminUserList");
+
+  let html = "";
+
+  for(let u in users){
+    let saved = db[u]?.saved || [];
+
+    html += `
+      <div class="admin-item">
+        <b>User:</b> ${u}<br>
+        <b>Password:</b> ${users[u]}<br>
+        <b>Saved (${saved.length}):</b><br>
+        ${saved.length ? saved.map(x=>`<span>${x}</span>`).join("") : "(none)"}
+        <br><br>
+        <button class="btn-red" onclick="adminDeleteSaved('${u}')">Delete Saved</button>
+        <button class="btn-red" onclick="adminDeleteUser('${u}')">Delete User</button>
+      </div>
+    `;
+  }
+
+  box.innerHTML = html || "(no users)";
+}
+
+function adminDeleteSaved(u){
+  let db = loadUserDB();
+  if(db[u]) db[u].saved = [];
+  saveUserDB(db);
+  refreshAdmin();
+}
+
+function adminDeleteUser(u){
+  let users = loadUsers();
+  let db = loadUserDB();
+
+  delete users[u];
+  delete db[u];
+
+  saveUsers(users);
+  saveUserDB(db);
+
+  refreshAdmin();
+}
+
+/* ======================= GACHA SYSTEM ======================= */
+
+let numbers = [];
+let usedCount = 0;
+
+const fileInput = document.getElementById("fileInput");
+const numberDisplay = document.getElementById("numberDisplay");
+const gachaBtn = document.getElementById("gachaBtn");
+const resetBtn = document.getElementById("resetBtn");
+const statusText = document.getElementById("statusText");
+const emptyText = document.getElementById("emptyText");
+const counterText = document.getElementById("counterText");
+const copyBtn = document.getElementById("copyBtn");
+const saveBtn = document.getElementById("saveBtn");
+const savedList = document.getElementById("savedList");
+
+function formatPlus(n){ return n.startsWith("+") ? n : "+"+n; }
+
+/* Load saved for active user */
+function loadSaved(){
+  let u = localStorage.getItem("activeUser");
+  let db = loadUserDB();
+
+  if(!db[u]) db[u]={saved:[]};
+
+  savedList.innerHTML = db[u].saved.length ?
+    db[u].saved.map(x=>`<span>${x}</span>`).join("") :
+    "(empty)";
+}
+
+/* Save number to user DB */
+function saveNumber(n){
+  let u = localStorage.getItem("activeUser");
+  let db = loadUserDB();
+
+  if(!db[u]) db[u]={saved:[]};
+
+  if(!db[u].saved.includes(n)){
+    db[u].saved.push(n);
+    saveUserDB(db);
+    loadSaved();
+  }
+}
+
+fileInput.onchange = ()=>{
+  const f = fileInput.files[0];
+  if(!f) return;
+
+  let r = new FileReader();
+  r.onload = e=>{
+    numbers = e.target.result.split(/\r?\n/).map(x=>x.trim()).filter(x=>x).map(formatPlus);
+    usedCount=0;
+    numberDisplay.textContent="—";
+    gachaBtn.disabled = numbers.length==0;
+    emptyText.style.display="none";
+    statusText.textContent=`Loaded ${numbers.length} numbers`;
+    update();
+  };
+  r.readAsText(f);
+};
+
+function update(){
+  counterText.textContent = numbers.length ?
+    `Remaining: ${numbers.length} • Used: ${usedCount}` : "";
+
+  copyBtn.disabled = numberDisplay.textContent==="—";
+  saveBtn.disabled = numberDisplay.textContent==="—";
+}
+
+gachaBtn.onclick = ()=>{
+  if(numbers.length==0){
+    emptyText.style.display="block";
+    gachaBtn.disabled=true;
+    return;
+  }
+
+  const i = Math.floor(Math.random()*numbers.length);
+  const pick = numbers.splice(i,1)[0];
+  usedCount++;
+  numberDisplay.textContent = pick;
+  update();
+};
+
+resetBtn.onclick = ()=>{
+  numbers=[]; usedCount=0;
+  fileInput.value="";
+  numberDisplay.textContent="—";
+  gachaBtn.disabled=true;
+  emptyText.style.display="none";
+  statusText.textContent="Session cleared.";
+  update();
+};
+
+copyBtn.onclick = ()=>{
+  navigator.clipboard.writeText(numberDisplay.textContent);
+  statusText.textContent="Copied!";
+};
+
+saveBtn.onclick = ()=>{
+  saveNumber(numberDisplay.textContent);
+  statusText.textContent="Saved!";
+};
+
+clearSaved.onclick = ()=>{
+  let u = localStorage.getItem("activeUser");
+  let db = loadUserDB();
+
+  db[u].saved = [];
+  saveUserDB(db);
+  loadSaved();
+  statusText.textContent="Saved list cleared.";
+};
+
+loadSaved();
+update();
+</script>
+
 </body>
 </html>
