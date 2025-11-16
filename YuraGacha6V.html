@@ -1,108 +1,264 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>YuraGacha</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8" />
+<title>YuraGacha – Premium Anime Edition</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
 <style>
-  :root { color-scheme: dark; }
-  * { box-sizing: border-box; }
+/* ============================================
+   DARK ANIME UI + PARTICLES + NEON GLOW
+   PREMIUM EDITION
+   ============================================ */
 
-  body {
-    margin: 0;
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    padding: 20px;
-    background: #020617;
-    color: #e5e7eb;
-    font-family: system-ui, sans-serif;
-  }
+:root {
+  color-scheme: dark;
+  --green: #22c55e;
+  --blue: #38bdf8;
+  --red: #ef4444;
+  --bg1: #020617;
+  --bg2: #0f172a;
+  --text: #e5e7eb;
+}
 
-  .shell { width:100%; max-width:480px; }
+* { box-sizing: border-box; }
 
-  .card {
-    padding: 18px;
-    border-radius: 20px;
-    background: rgba(15,23,42,0.85);
-    border: 1px solid rgba(148,163,184,0.28);
-    margin-top: 20px;
-  }
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  padding: 25px;
+  background: radial-gradient(circle at top, #08101e, #000);
+  color: var(--text);
+  font-family: "Poppins", system-ui, sans-serif;
+  overflow-x: hidden;
+}
 
-  input {
-    width: 100%;
-    padding: 10px;
-    border-radius: 8px;
-    border: none;
-    margin-top: 8px;
-    background: rgba(30,41,59,0.8);
-    color: #e5e7eb;
-  }
+/* ===== Anime Particles ===== */
+#particles {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
 
-  .btn {
-    width: 100%;
-    padding: 12px;
-    border-radius: 999px;
-    border: none;
-    margin-top: 12px;
-    cursor: pointer;
-    font-size: 15px;
-    font-weight: 600;
-  }
+.p {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: var(--blue);
+  border-radius: 50%;
+  opacity: 0.7;
+  animation: floatUp 6s linear infinite;
+}
 
-  .btn-success { background: #22c55e; color: #022c22; }
-  .btn-dark { background: #111827; color:#e5e7eb; border:1px solid #374151; }
-  .btn-red { background:#dc2626; color:white; }
+@keyframes floatUp {
+  0% { transform: translateY(0) scale(1); opacity: 0.9; }
+  100% { transform: translateY(-200px) scale(0.2); opacity: 0; }
+}
 
-  .link {
-    color:#38bdf8;
-    margin-top:8px;
-    text-align:center;
-    font-size:13px;
-    cursor:pointer;
-  }
+/* ===== Main Container ===== */
+.shell {
+  width: 100%;
+  max-width: 480px;
+  position: relative;
+  z-index: 10;
+  animation: fadeIn 0.6s ease-out;
+}
 
-  .file-zone { border:1px dashed #334155; padding:10px; border-radius:12px; }
-  .number-box { margin-top:12px; padding:14px; background:#111827; border:1px solid #374151; border-radius:12px; }
-  .number { font-size:24px; text-align:center; color:#22c55e; }
+@keyframes fadeIn {
+  from { opacity:0; transform:translateY(15px); }
+  to { opacity:1; transform:translateY(0); }
+}
 
-  #savedList span {
-    background:#0f172a; border:1px solid #4b5563;
-    padding:4px 8px; margin:2px; border-radius:6px; display:inline-block;
-  }
+/* ===== Avatar ===== */
+#avatarBox {
+  text-align: center;
+  margin-bottom: 20px;
+}
 
-  .admin-item {
-    padding:10px;
-    border-radius:10px;
-    background:#0f172a;
-    margin-top:8px;
-    border:1px solid #334155;
-  }
+#avatarBox img {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  border: 3px solid var(--blue);
+  object-fit: cover;
+  box-shadow: 0 0 25px #38bdf888;
+  animation: glowPulse 2.8s infinite ease-in-out;
+}
+
+@keyframes glowPulse {
+  0% { box-shadow: 0 0 12px #38bdf855; }
+  50% { box-shadow: 0 0 25px #38bdf8cc; }
+  100% { box-shadow: 0 0 12px #38bdf855; }
+}
+
+/* ===== Premium Card ===== */
+.card {
+  padding: 20px;
+  margin-top: 20px;
+  background: rgba(15,23,42,0.68);
+  border: 1px solid rgba(148,163,184,0.25);
+  border-radius: 22px;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 0 30px #000a;
+  animation: cardFade 0.4s ease;
+}
+
+@keyframes cardFade {
+  from { opacity:0; transform:translateY(10px); }
+  to { opacity:1; transform:translateY(0); }
+}
+
+/* ===== Input ===== */
+input {
+  width: 100%;
+  padding: 12px;
+  margin-top: 10px;
+  background: rgba(30,41,59,0.8);
+  border: 1px solid rgba(148,163,184,0.2);
+  border-radius: 10px;
+  color: white;
+  font-size: 15px;
+  transition: 0.25s;
+}
+
+input:focus {
+  border-color: var(--blue);
+  box-shadow: 0 0 12px #38bdf855;
+}
+
+/* ===== Buttons ===== */
+.btn {
+  width: 100%;
+  padding: 12px;
+  border-radius: 999px;
+  border: none;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 12px;
+  transition: 0.25s;
+}
+
+.btn-success {
+  background: var(--green);
+  color: #032d15;
+  box-shadow: 0 0 16px #22c55e66;
+}
+
+.btn-success:hover {
+  box-shadow: 0 0 30px #22c55eaa;
+  transform: scale(1.03);
+}
+
+.btn-dark {
+  background: var(--bg2);
+  color: var(--text);
+  border: 1px solid #334155;
+}
+
+.btn-dark:hover {
+  background: #1e293b;
+  transform: scale(1.02);
+}
+
+.btn-red {
+  background: var(--red);
+  color: white;
+  box-shadow: 0 0 15px #ef444466;
+}
+
+/* ===== Number Box ===== */
+.number-box {
+  padding: 18px;
+  border-radius: 20px;
+  background: #0f172a;
+  border: 1px solid #334155;
+  margin-top: 15px;
+}
+
+.number {
+  font-size: 30px;
+  text-align: center;
+  color: var(--green);
+  text-shadow: 0 0 18px #22c55ecc;
+  animation: glowPulseGreen 2.5s infinite ease-in-out;
+}
+
+@keyframes glowPulseGreen {
+  0% { text-shadow: 0 0 10px #22c55e77; }
+  50% { text-shadow: 0 0 25px #22c55ecc; }
+  100% { text-shadow: 0 0 10px #22c55e77; }
+}
+
+/* ===== Saved Badges ===== */
+#savedList span {
+  background:#1e293b;
+  border:1px solid #334155;
+  padding:5px 8px;
+  margin:3px;
+  border-radius:6px;
+  display:inline-block;
+  font-size: 13px;
+}
+
+/* ===== Admin Boxes ===== */
+.admin-item {
+  background:#0f172a;
+  border:1px solid #334155;
+  padding:12px;
+  border-radius:12px;
+  margin-top:12px;
+}
 </style>
 </head>
+
 <body>
+
+<!-- PARTICLES -->
+<div id="particles"></div>
+
+<script>
+for (let i = 0; i < 40; i++) {
+  let p = document.createElement("div");
+  p.className = "p";
+  p.style.left = Math.random()*100 + "%";
+  p.style.top = (Math.random()*120+100) + "px";
+  p.style.animationDelay = Math.random()*4 + "s";
+  particles.appendChild(p);
+}
+</script>
+
 <div class="shell">
 
-<!-- ================= LOG IN ================= -->
+<!-- AVATAR HEADER -->
+<div id="avatarBox">
+  <img src="https://raw.githubusercontent.com/maskedtrash/YuraGacha/main/c1aqQ7DI_400x400.jpg">
+</div>
+
+
+<!-- LOGIN PAGE -->
 <div id="loginPage">
   <div class="card">
-    <h2>Login</h2>
+    <h2 style="text-align:center;">Login</h2>
 
-    <input id="loginUser" placeholder="Username">
-    <input id="loginPass" type="password" placeholder="Password">
+    <input id="loginUser" placeholder="Username" />
+    <input id="loginPass" type="password" placeholder="Password" />
 
     <button class="btn btn-success" id="loginBtn">Login</button>
-
     <div class="link" onclick="showRegister()">Create account</div>
 
-    <div id="loginMsg" style="margin-top:8px; color:#f87171;"></div>
+    <div id="loginMsg" style="color:#f87171;margin-top:8px;"></div>
   </div>
 </div>
 
-<!-- ================= REGISTER ================= -->
+
+<!-- REGISTER -->
 <div id="registerPage" style="display:none;">
   <div class="card">
-    <h2>Register</h2>
+    <h2 style="text-align:center;">Register</h2>
 
     <input id="regUser" placeholder="Choose Username">
     <input id="regPass" type="password" placeholder="Choose Password">
@@ -110,38 +266,40 @@
     <button class="btn btn-success" id="regBtn">Register</button>
 
     <div class="link" onclick="showLogin()">Back to Login</div>
-    <div id="regMsg" style="margin-top:8px; color:#f87171;"></div>
+    <div id="regMsg" style="margin-top:8px;color:#f87171;"></div>
   </div>
 </div>
 
-<!-- ================= MAIN USER PAGE ================= -->
+
+<!-- MAIN PAGE -->
 <div id="mainPage" style="display:none;">
-  <div style="display:flex; justify-content:space-between; align-items:center;">
+
+  <div style="display:flex;justify-content:space-between;align-items:center;">
     <h2>YuraGacha</h2>
-    <button class="btn-dark" onclick="logout()" style="padding:6px 12px;">Logout</button>
+    <button class="btn-dark" onclick="logout()" style="width:auto;padding:6px 12px;">
+      Logout
+    </button>
   </div>
 
-  <!-- Upload -->
   <div class="card">
-    <div class="file-zone">
-      <input type="file" id="fileInput" accept=".txt">
-    </div>
+    <input type="file" id="fileInput" accept=".txt" class="file-zone">
+
     <div id="statusText" style="margin-top:10px;">No file yet.</div>
 
     <div class="number-box">
-      <div class="number" id="numberDisplay">—</div>
+      <div id="numberDisplay" class="number">—</div>
 
-      <div style="display:flex; gap:10px; margin-top:12px;">
+      <div style="display:flex; gap:10px;margin-top:12px;">
         <button class="btn-dark" id="copyBtn" disabled>Copy</button>
         <button class="btn-dark" id="saveBtn" disabled>Save</button>
       </div>
 
-      <div id="emptyText" style="display:none; margin-top:6px; color:#94a3b8;">
+      <div id="emptyText" style="display:none;color:#94a3b8;margin-top:6px;">
         All numbers used.
       </div>
     </div>
 
-    <div style="display:flex; gap:10px; margin-top:15px;">
+    <div style="display:flex; gap:10px;margin-top:15px;">
       <button class="btn-success" id="gachaBtn" disabled>GACHA</button>
       <button class="btn-dark" id="resetBtn">Clear</button>
     </div>
@@ -149,18 +307,21 @@
     <div id="counterText" style="margin-top:10px;"></div>
   </div>
 
-  <!-- Saved -->
   <div class="card">
     <h3>Saved Numbers</h3>
     <div id="savedList">(empty)</div>
-    <button class="btn-dark" id="clearSaved" style="margin-top:10px;width:100%;">Clear Saved</button>
+    <button class="btn-dark" id="clearSaved" style="margin-top:10px;">
+      Clear Saved
+    </button>
   </div>
+
 </div>
 
-<!-- ================= ADMIN PANEL ================= -->
+
+<!-- ADMIN -->
 <div id="adminPage" style="display:none;">
   <h2>Admin Panel</h2>
-  <button class="btn-dark" onclick="logout()" style="padding:6px 12px;">Logout</button>
+  <button class="btn-dark" onclick="logout()">Logout</button>
 
   <div class="card">
     <h3>All Users</h3>
@@ -171,34 +332,34 @@
 </div>
 
 <script>
-/* ======================= DATABASE ======================= */
+/* BASIC DB (LOCALSTORAGE) */
 function loadUsers(){ return JSON.parse(localStorage.getItem("yg_users") || "{}"); }
 function saveUsers(o){ localStorage.setItem("yg_users", JSON.stringify(o)); }
 
 function loadUserDB(){ return JSON.parse(localStorage.getItem("yg_userData") || "{}"); }
 function saveUserDB(o){ localStorage.setItem("yg_userData", JSON.stringify(o)); }
 
-/* ======================= PAGE SWITCH ======================= */
-function showLogin(){ loginPage.style.display="block"; registerPage.style.display="none"; mainPage.style.display="none"; adminPage.style.display="none";}
-function showRegister(){ loginPage.style.display="none"; registerPage.style.display="block"; mainPage.style.display="none"; adminPage.style.display="none";}
-function showMain(){ loginPage.style.display="none"; registerPage.style.display="none"; mainPage.style.display="block"; adminPage.style.display="none";}
+/* PAGE SWITCH */
+function showLogin(){ loginPage.style.display="block"; registerPage.style.display="none"; mainPage.style.display="none"; adminPage.style.display="none"; }
+function showRegister(){ loginPage.style.display="none"; registerPage.style.display="block"; mainPage.style.display="none"; adminPage.style.display="none"; }
+function showMain(){ loginPage.style.display="none"; registerPage.style.display="none"; mainPage.style.display="block"; adminPage.style.display="none"; }
 function showAdmin(){ loginPage.style.display="none"; registerPage.style.display="none"; mainPage.style.display="none"; adminPage.style.display="block"; }
 
-/* ======================= AUTO LOGIN ======================= */
+/* AUTO LOGIN */
 let active = localStorage.getItem("activeUser");
 if(active){
   if(active === "admin") showAdmin();
   else showMain();
 }
 
-/* ======================= REGISTER ======================= */
+/* REGISTER */
 regBtn.onclick = ()=>{
   let u = regUser.value.trim();
   let p = regPass.value.trim();
   let users = loadUsers();
   let db = loadUserDB();
 
-  if(!u || !p){ regMsg.textContent="Both fields required."; return; }
+  if(!u || !p){ regMsg.textContent="Fill all fields."; return; }
   if(users[u]){ regMsg.textContent="Username exists."; return; }
 
   users[u] = p;
@@ -211,7 +372,7 @@ regBtn.onclick = ()=>{
   showMain();
 };
 
-/* ======================= LOGIN ======================= */
+/* LOGIN */
 loginBtn.onclick = ()=>{
   let u = loginUser.value.trim();
   let p = loginPass.value.trim();
@@ -228,38 +389,35 @@ loginBtn.onclick = ()=>{
     localStorage.setItem("activeUser", u);
     showMain();
   } else {
-    loginMsg.textContent="Wrong username/password.";
+    loginMsg.textContent="Wrong username or password.";
   }
 };
 
-/* ======================= LOGOUT ======================= */
+/* LOGOUT */
 function logout(){
   localStorage.removeItem("activeUser");
   showLogin();
 }
 
-/* ======================= ADMIN PANEL ======================= */
+/* ADMIN PANEL */
 function refreshAdmin(){
   let users = loadUsers();
   let db = loadUserDB();
-  let box = document.getElementById("adminUserList");
-
+  let box = adminUserList;
   let html = "";
 
   for(let u in users){
     let saved = db[u]?.saved || [];
 
     html += `
-      <div class="admin-item">
-        <b>User:</b> ${u}<br>
-        <b>Password:</b> ${users[u]}<br>
-        <b>Saved (${saved.length}):</b><br>
-        ${saved.length ? saved.map(x=>`<span>${x}</span>`).join("") : "(none)"}
-        <br><br>
-        <button class="btn-red" onclick="adminDeleteSaved('${u}')">Delete Saved</button>
-        <button class="btn-red" onclick="adminDeleteUser('${u}')">Delete User</button>
-      </div>
-    `;
+    <div class="admin-item">
+      <b>User:</b> ${u}<br>
+      <b>Password:</b> ${users[u]}<br>
+      <b>Saved (${saved.length}):</b><br>
+      ${saved.length ? saved.map(x=>`<span>${x}</span>`).join("") : "(none)"}<br><br>
+      <button class="btn-red" onclick="adminDeleteSaved('${u}')">Delete Saved</button>
+      <button class="btn-red" onclick="adminDeleteUser('${u}')">Delete User</button>
+    </div>`;
   }
 
   box.innerHTML = html || "(no users)";
@@ -275,59 +433,16 @@ function adminDeleteSaved(u){
 function adminDeleteUser(u){
   let users = loadUsers();
   let db = loadUserDB();
-
   delete users[u];
   delete db[u];
-
   saveUsers(users);
   saveUserDB(db);
-
   refreshAdmin();
 }
 
-/* ======================= GACHA SYSTEM ======================= */
-
+/* GACHA SYSTEM */
 let numbers = [];
 let usedCount = 0;
-
-const fileInput = document.getElementById("fileInput");
-const numberDisplay = document.getElementById("numberDisplay");
-const gachaBtn = document.getElementById("gachaBtn");
-const resetBtn = document.getElementById("resetBtn");
-const statusText = document.getElementById("statusText");
-const emptyText = document.getElementById("emptyText");
-const counterText = document.getElementById("counterText");
-const copyBtn = document.getElementById("copyBtn");
-const saveBtn = document.getElementById("saveBtn");
-const savedList = document.getElementById("savedList");
-
-function formatPlus(n){ return n.startsWith("+") ? n : "+"+n; }
-
-/* Load saved for active user */
-function loadSaved(){
-  let u = localStorage.getItem("activeUser");
-  let db = loadUserDB();
-
-  if(!db[u]) db[u]={saved:[]};
-
-  savedList.innerHTML = db[u].saved.length ?
-    db[u].saved.map(x=>`<span>${x}</span>`).join("") :
-    "(empty)";
-}
-
-/* Save number to user DB */
-function saveNumber(n){
-  let u = localStorage.getItem("activeUser");
-  let db = loadUserDB();
-
-  if(!db[u]) db[u]={saved:[]};
-
-  if(!db[u].saved.includes(n)){
-    db[u].saved.push(n);
-    saveUserDB(db);
-    loadSaved();
-  }
-}
 
 fileInput.onchange = ()=>{
   const f = fileInput.files[0];
@@ -335,7 +450,7 @@ fileInput.onchange = ()=>{
 
   let r = new FileReader();
   r.onload = e=>{
-    numbers = e.target.result.split(/\r?\n/).map(x=>x.trim()).filter(x=>x).map(formatPlus);
+    numbers = e.target.result.split(/\r?\n/).map(x=>x.trim()).filter(x=>x);
     usedCount=0;
     numberDisplay.textContent="—";
     gachaBtn.disabled = numbers.length==0;
@@ -347,8 +462,8 @@ fileInput.onchange = ()=>{
 };
 
 function update(){
-  counterText.textContent = numbers.length ?
-    `Remaining: ${numbers.length} • Used: ${usedCount}` : "";
+  counterText.textContent =
+    numbers.length ? `Remaining: ${numbers.length} • Used: ${usedCount}` : "";
 
   copyBtn.disabled = numberDisplay.textContent==="—";
   saveBtn.disabled = numberDisplay.textContent==="—";
@@ -363,13 +478,15 @@ gachaBtn.onclick = ()=>{
 
   const i = Math.floor(Math.random()*numbers.length);
   const pick = numbers.splice(i,1)[0];
+
   usedCount++;
   numberDisplay.textContent = pick;
   update();
 };
 
 resetBtn.onclick = ()=>{
-  numbers=[]; usedCount=0;
+  numbers = [];
+  usedCount = 0;
   fileInput.value="";
   numberDisplay.textContent="—";
   gachaBtn.disabled=true;
@@ -384,14 +501,31 @@ copyBtn.onclick = ()=>{
 };
 
 saveBtn.onclick = ()=>{
-  saveNumber(numberDisplay.textContent);
+  let u = localStorage.getItem("activeUser");
+  let db = loadUserDB();
+
+  if(!db[u]) db[u]={saved:[]};
+
+  if(!db[u].saved.includes(numberDisplay.textContent)){
+    db[u].saved.push(numberDisplay.textContent);
+    saveUserDB(db);
+    loadSaved();
+  }
   statusText.textContent="Saved!";
 };
+
+function loadSaved(){
+  let u = localStorage.getItem("activeUser");
+  let db = loadUserDB();
+  savedList.innerHTML =
+    db[u]?.saved?.length ?
+      db[u].saved.map(x=>`<span>${x}</span>`).join("") :
+      "(empty)";
+}
 
 clearSaved.onclick = ()=>{
   let u = localStorage.getItem("activeUser");
   let db = loadUserDB();
-
   db[u].saved = [];
   saveUserDB(db);
   loadSaved();
